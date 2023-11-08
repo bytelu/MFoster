@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Create persona</h1>
+{{error}}
+<form action="/task/persona/" method="POST">
+    {% csrf_token %}
+    {{form}}
+    <button>
+        save
+    </button>
+</form>
+{% endblock %}
