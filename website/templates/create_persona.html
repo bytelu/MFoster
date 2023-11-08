@@ -3,7 +3,7 @@
 {% block content %}
 <h1>Create persona</h1>
 {{error}}
-<form action="/task/persona/" method="POST">
+<form action="/persona/create/" method="POST">
     {% csrf_token %}
     {{form}}
     <button>

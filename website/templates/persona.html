@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Persona</h1>
+
+<ul>
+    {% for persona in personas %}
+        <li>
+            <a href="{% url 'persona_detail' persona.id_persona %}">
+                {{persona.nombre}} {{persona.apellido_p}} {{persona.apellido_m}}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
