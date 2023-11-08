@@ -5,6 +5,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
 from .forms import PersonaForm
 from .models import Persona
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -36,6 +37,7 @@ def signup(request):
         })
 
 
+@login_required
 def persona(request):
     personas = Persona.objects.all()
     return render(request, 'persona.html', {
@@ -43,6 +45,7 @@ def persona(request):
     })
 
 
+@login_required
 def signout(request):
     logout(request)
     return redirect('home')
@@ -65,6 +68,7 @@ def signin(request):
             return redirect('home')
 
 
+@login_required
 def create_persona(request):
     if request.method == 'GET':
         return render(request, 'create_persona.html', {
@@ -83,6 +87,7 @@ def create_persona(request):
             })
 
 
+@login_required
 def persona_detail(request, persona_id):
     if request.method == 'GET':
         persona = get_object_or_404(Persona, pk=persona_id)
@@ -99,6 +104,7 @@ def persona_detail(request, persona_id):
                                                            'error': 'error updating persona'})
 
 
+@login_required
 def delete_persona(request, persona_id):
     persona = get_object_or_404(Persona, pk=persona_id)
     if request.method == 'POST':
