@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Create direccion</h1>
+{{error}}
+<form action="/direccion/create/" method="POST">
+    {% csrf_token %}
+    {{form}}
+    <button>
+        save
+    </button>
+</form>
+{% endblock %}

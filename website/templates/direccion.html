@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Direcciones</h1>
+
+<ul>
+    {% for direccion in direccions %}
+        <li>
+            <a href="{% url 'direccion_detail' direccion.id_direccion %}">
+                {{direccion.calle}} {{direccion.num_ext}} {{direccion.num_int}} {{direccion.colonia}} {{direccion.estado}}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
