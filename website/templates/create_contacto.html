@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Create empleado</h1>
+<h1>Create contacto</h1>
 {{error}}
-<form action="/empleado/create/" method="POST">
+<form action="/contacto/create/" method="POST">
     {% csrf_token %}
     {{form}}
     <button>

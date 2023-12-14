@@ -3,8 +3,8 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
-from .forms import PersonaForm, DireccionForm
-from .models import Persona, Direccion
+from .forms import PersonaForm, DireccionForm, PuestoForm, ContactoForm
+from .models import Persona, Direccion, Puesto, Contacto
 from django.contrib.auth.decorators import login_required
 
 
