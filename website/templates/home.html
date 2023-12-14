@@ -1,8 +1,88 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Home</h1>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        text-align: center;
+        margin-top: 50px;
+        color: #007bff;
+    }
+
+    p {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto 20px;
+        line-height: 1.6;
+    }
+
+    h2 {
+        text-align: center;
+        color: #009688;
+        text-decoration: underline;
+    }
+
+    /* Estilos para el bloque de Sobre Nosotros */
+    .sobre-nosotros {
+        background-color: #fff;
+        padding: 20px;
+        margin: 20px auto;
+        max-width: 800px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .animated-images {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-top: 20px;
+    }
+
+    .animated-images img {
+        width: 200px;
+        height: 200px;
+        margin: 10px;
+        border-radius: 50%;
+        animation: bounce 1s infinite alternate;
+    }
+
+    /* Animación */
+    @keyframes bounce {
+        0% {
+            transform: translateY(0);
+        }
+        100% {
+            transform: translateY(-20px);
+        }
+    }
+
+</style>
+
+<h1>Patitas y Garritas</h1>
 <p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium asperiores aspernatur deserunt dolorem earum error est exercitationem id impedit incidunt iure labore maiores nemo nesciunt obcaecati odit perferendis placeat quibusdam quidem quisquam, reiciendis repellat repudiandae saepe sapiente sed sit sunt, tempora ullam ut vero voluptatem voluptates voluptatum! Architecto commodi consequatur culpa cupiditate deleniti ea eaque esse facilis fugit in ipsam iusto minima nemo nesciunt nisi obcaecati odit optio porro quisquam ratione recusandae, repellat repellendus tempora vel vero? Accusamus consequatur consequuntur cum dolorem ducimus earum exercitationem expedita hic ipsam, labore libero maiores nostrum, odit saepe sunt suscipit totam voluptas voluptatibus.
+    ¡Bienvenido a nuestro refugio de mascotas! Encontrar tu compañero peludo perfecto es más que una adopción: es el comienzo de una historia de amor incondicional. Explora nuestras adorables mascotas en busca de un hogar y descubre cómo puedes cambiar una vida adoptando.
 </p>
+
+<div class="animated-images">
+    <img src="./Img/Fotos_%2030%20gatos%20adorables%20que%20sacarán%20tu%20lado%20más%20tierno.jpg" alt="Imagen 1">
+    <img src="./Img/Brotherhood.jpg" alt="Imagen 2">
+    <!-- Agrega más imágenes aquí si es necesario -->
+</div>
+
+    <h2> Sobre Nosotros </h2>
+    <p>
+        Sobre Nosotros:
+En nuestro refugio, creemos en dar segundas oportunidades. Desde perros juguetones hasta gatos cariñosos, cada mascota tiene una historia única. Estamos dedicados a encontrarles hogares amorosos donde puedan prosperar y ser parte de una familia. Conoce nuestro equipo comprometido y nuestra misión de hacer que cada mascota encuentre su lugar en el mundo.
+    </p>
+
 {% endblock %}
