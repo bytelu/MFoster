@@ -3,9 +3,9 @@ from django.db import models
 
 class Adopcion(models.Model):
     id_adopcion = models.AutoField(db_column='Id_adopcion', primary_key=True)  # Field name made lowercase.
-    id_animal = models.ForeignKey('Animal', models.DO_NOTHING, db_column='Id_animal', blank=True, null=True)  # Field name made lowercase.
-    id_adoptante = models.ForeignKey('Adoptante', models.DO_NOTHING, db_column='Id_adoptante', blank=True, null=True)  # Field name made lowercase.
-    id_empleado = models.ForeignKey('Empleado', models.DO_NOTHING, db_column='Id_empleado', blank=True, null=True)  # Field name made lowercase.
+    id_animal = models.ForeignKey('Animal', models.CASCADE, db_column='Id_animal', blank=True, null=True)  # Field name made lowercase.
+    id_adoptante = models.ForeignKey('Adoptante', models.CASCADE, db_column='Id_adoptante', blank=True, null=True)  # Field name made lowercase.
+    id_empleado = models.ForeignKey('Empleado', models.CASCADE, db_column='Id_empleado', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         db_table = 'Adopcion'
@@ -13,9 +13,9 @@ class Adopcion(models.Model):
 
 class Adoptante(models.Model):
     id_adoptante = models.AutoField(db_column='Id_adoptante', primary_key=True)  # Field name made lowercase.
-    id_persona = models.ForeignKey('Persona', models.DO_NOTHING, db_column='Id_persona', blank=True, null=True)  # Field name made lowercase.
-    id_contacto = models.ForeignKey('Contacto', models.DO_NOTHING, db_column='Id_contacto', blank=True, null=True)  # Field name made lowercase.
-    id_direccion = models.ForeignKey('Direccion', models.DO_NOTHING, db_column='Id_direccion', blank=True, null=True)  # Field name made lowercase.
+    id_persona = models.ForeignKey('Persona', models.CASCADE, db_column='Id_persona', blank=True, null=True)  # Field name made lowercase.
+    id_contacto = models.ForeignKey('Contacto', models.CASCADE, db_column='Id_contacto', blank=True, null=True)  # Field name made lowercase.
+    id_direccion = models.ForeignKey('Direccion', models.CASCADE, db_column='Id_direccion', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         db_table = 'Adoptante'
@@ -25,7 +25,7 @@ class Animal(models.Model):
     id_animal = models.AutoField(db_column='Id_animal', primary_key=True)  # Field name made lowercase.
     nombre_animal = models.CharField(db_column='Nombre_animal', max_length=100, blank=True, null=True)  # Field name made lowercase.
     descripcion_animal = models.TextField(db_column='Descripcion_animal', blank=True, null=True)  # Field name made lowercase.
-    id_especie = models.ForeignKey('Especie', models.DO_NOTHING, db_column='Id_especie', blank=True, null=True)  # Field name made lowercase.
+    id_especie = models.ForeignKey('Especie', models.CASCADE, db_column='Id_especie', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         db_table = 'Animal'
@@ -54,10 +54,10 @@ class Direccion(models.Model):
 
 class Empleado(models.Model):
     id_empleado = models.AutoField(db_column='Id_empleado', primary_key=True)  # Field name made lowercase.
-    id_persona = models.ForeignKey('Persona', models.DO_NOTHING, db_column='Id_persona', blank=True, null=True)  # Field name made lowercase.
-    id_contacto = models.ForeignKey(Contacto, models.DO_NOTHING, db_column='Id_contacto', blank=True, null=True)  # Field name made lowercase.
-    id_direccion = models.ForeignKey(Direccion, models.DO_NOTHING, db_column='Id_direccion', blank=True, null=True)  # Field name made lowercase.
-    id_puesto = models.ForeignKey('Puesto', models.DO_NOTHING, db_column='Id_puesto', blank=True, null=True)  # Field name made lowercase.
+    id_persona = models.ForeignKey('Persona', models.CASCADE, db_column='Id_persona', blank=True, null=True)  # Field name made lowercase.
+    id_contacto = models.ForeignKey(Contacto, models.CASCADE, db_column='Id_contacto', blank=True, null=True)  # Field name made lowercase.
+    id_direccion = models.ForeignKey(Direccion, models.CASCADE, db_column='Id_direccion', blank=True, null=True)  # Field name made lowercase.
+    id_puesto = models.ForeignKey('Puesto', models.CASCADE, db_column='Id_puesto', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         db_table = 'Empleado'
@@ -95,7 +95,7 @@ class Seguimiento(models.Model):
     id_seguimiento = models.AutoField(db_column='Id_seguimiento', primary_key=True)  # Field name made lowercase.
     fecha = models.DateField(db_column='Fecha', blank=True, null=True)  # Field name made lowercase.
     detalles = models.TextField(db_column='Detalles', blank=True, null=True)  # Field name made lowercase.
-    id_adopcion = models.ForeignKey(Adopcion, models.DO_NOTHING, db_column='Id_adopcion', blank=True, null=True)  # Field name made lowercase.
+    id_adopcion = models.ForeignKey(Adopcion, models.CASCADE, db_column='Id_adopcion', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         db_table = 'Seguimiento'
