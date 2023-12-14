@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Puesto detail</h1>
+
+<h1>{{puesto.nombre_puesto}}</h1>
+{{error}}
+<form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button>
+        Update
+    </button>
+</form>
+
+<form action="{% url 'delete_puesto' puesto.id_puesto %}" method="POST">
+    {% csrf_token %}
+    <button>
+    Delete
+    </button>
+</form>
+
+{% endblock %}

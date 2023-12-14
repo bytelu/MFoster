@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Puesto</h1>
+    
+<ul>
+    {% for puesto in puestos %}
+        <li>
+            <a href="{% url 'puesto_detail' puesto.id_puesto %}">
+                {{puesto.nombre_puesto}}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

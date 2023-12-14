@@ -46,6 +46,22 @@ def persona(request):
 
 
 @login_required
+def puesto(request):
+    puestos = Puesto.objects.all()
+    return render(request, 'puesto.html', {
+        'puestos': puestos
+    })
+
+
+@login_required
+def contacto(request):
+    contacts = Contacto.objects.all()
+    return render(request, 'contacto.html', {
+        'contacts': contacts
+    })
+
+
+@login_required
 def direccion(request):
     direccions = Direccion.objects.all()
     return render(request, 'direccion.html', {
@@ -96,6 +112,44 @@ def create_persona(request):
 
 
 @login_required
+def create_puesto(request):
+    if request.method == 'GET':
+        return render(request, 'create_puesto.html', {
+            'form': PuestoForm
+        })
+    else:
+        try:
+            form = PuestoForm(request.POST)
+            new_puesto = form.save(commit=False)
+            new_puesto.save()
+            return redirect('puesto')
+        except ValueError:
+            return render(request, 'create_puesto.html', {
+                'form': PuestoForm,
+                'error': 'Provee datos validos'
+            })
+
+
+@login_required
+def create_contacto(request):
+    if request.method == 'GET':
+        return render(request, 'create_contacto.html', {
+            'form': ContactoForm
+        })
+    else:
+        try:
+            form = ContactoForm(request.POST)
+            new_contacto = form.save(commit=False)
+            new_contacto.save()
+            return redirect('contacto')
+        except ValueError:
+            return render(request, 'create_contacto.html', {
+                'form': ContactoForm,
+                'error': 'Provee datos validos'
+            })
+
+
+@login_required
 def create_direccion(request):
     if request.method == 'GET':
         return render(request, 'create_direccion.html', {
@@ -132,6 +186,40 @@ def persona_detail(request, persona_id):
 
 
 @login_required
+def puesto_detail(request, puesto_id):
+    if request.method == 'GET':
+        puesto = get_object_or_404(Puesto, pk=puesto_id)
+        form = PuestoForm(instance=puesto)
+        return render(request, 'puesto_detail.html', {'puesto': puesto, 'form': form})
+    else:
+        try:
+            puesto = get_object_or_404(Puesto, pk=puesto_id)
+            form = PuestoForm(request.POST, instance=puesto)
+            form.save()
+            return redirect('puesto')
+        except ValueError:
+            return render(request, 'puesto_detail.html', {'puesto': puesto, 'form': form,
+                                                          'error': 'error updating puesto'})
+
+
+@login_required
+def contacto_detail(request, contacto_id):
+    if request.method == 'GET':
+        contacto = get_object_or_404(Contacto, pk=contacto_id)
+        form = ContactoForm(instance=contacto)
+        return render(request, 'contacto_detail.html', {'contacto': contacto, 'form': form})
+    else:
+        try:
+            contacto = get_object_or_404(Contacto, pk=contacto_id)
+            form = ContactoForm(request.POST, instance=contacto)
+            form.save()
+            return redirect('contacto')
+        except ValueError:
+            return render(request, 'contacto_detail.html', {'contacto': contacto, 'form': form,
+                                                            'error': 'error updating contacto'})
+
+
+@login_required
 def direccion_detail(request, direccion_id):
     if request.method == 'GET':
         direccion = get_object_or_404(Direccion, pk=direccion_id)
@@ -154,6 +242,22 @@ def delete_persona(request, persona_id):
     if request.method == 'POST':
         persona.delete()
         return redirect('persona')
+
+
+@login_required
+def delete_puesto(request, puesto_id):
+    puesto = get_object_or_404(Puesto, pk=puesto_id)
+    if request.method == 'POST':
+        puesto.delete()
+        return redirect('puesto')
+
+
+@login_required
+def delete_contacto(request, contacto_id):
+    contacto = get_object_or_404(Contacto, pk=contacto_id)
+    if request.method == 'POST':
+        contacto.delete()
+        return redirect('contacto')
 
 
 @login_required

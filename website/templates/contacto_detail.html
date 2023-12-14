@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Persona detail</h1>
+
+<h1>{{persona.correo}}</h1>
+{{error}}
+<form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button>
+        Update
+    </button>
+</form>
+
+<form action="{% url 'delete_contacto' contacto.id_contacto %}" method="POST">
+    {% csrf_token %}
+    <button>
+    Delete
+    </button>
+</form>
+
+{% endblock %}

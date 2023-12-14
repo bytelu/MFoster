@@ -12,3 +12,14 @@ class DireccionForm(ModelForm):
     class Meta:
         model = Direccion
         fields = ['calle', 'num_ext', 'num_int', 'colonia', 'estado']
+
+class PuestoForm(ModelForm):
+    class Meta:
+        model = Puesto
+        fields = ['nombre_puesto']
+
+
+class ContactoForm(ModelForm):
+    class Meta:
+        model = Contacto
+        fields = ['correo', 'telefono']

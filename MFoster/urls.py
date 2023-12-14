@@ -32,4 +32,10 @@ urlpatterns = [
     path('direccion/create/', views.create_direccion, name='create_direccion'),
     path('direccion/<int:direccion_id>/', views.direccion_detail, name='direccion_detail'),
     path('direccion/<int:direccion_id>/delete', views.delete_direccion, name='delete_direccion'),
+    path('puesto/', views.puesto, name='puesto'),
+    path('puesto/create/', views.create_puesto, name='create_puesto'),
+    path('puesto/<int:puesto_id>/delete', views.delete_puesto, name='delete_puesto'),
+    path('contacto/', views.contacto, name='contacto'),
+    path('contacto/create/', views.create_contacto, name='create_contacto'),
+    path('contacto/<int:contacto_id>/delete', views.delete_contacto, name='delete_contacto')
 ]
